@@ -3,7 +3,7 @@ import styles from './Users.css';
 import { connect } from 'dva';
 import { Table, Pagination, Popconfirm } from 'antd';
 
-function Users({ list: dataSource, total, page: current }) {
+function Users({ list: dataSource, total, page: current, loading }) {
 
   function deleteHandler(id) {
     console.warn(`TODO: ${id}`);
@@ -47,6 +47,7 @@ function Users({ list: dataSource, total, page: current }) {
         <Table
           columns={columns}
           dataSource={dataSource}
+          loading={loading}
           rowKey={record => record.id}
           pagination={false}/>
         <Pagination
@@ -61,7 +62,7 @@ function Users({ list: dataSource, total, page: current }) {
 
 function mapStateToProps(state) {
   const { list, total, page } = state.users;
-  return { list, total, page }
+  return { list, total, page, loading: state.loading.models.users, }
 }
 
 export default connect(mapStateToProps)(Users);
