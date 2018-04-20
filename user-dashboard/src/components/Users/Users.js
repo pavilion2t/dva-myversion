@@ -7,7 +7,10 @@ import { routerRedux } from 'dva/router';
 function Users({ list: dataSource, total, page: current, loading, dispatch }) {
 
   function deleteHandler(id) {
-    console.warn(`TODO: ${id}`);
+    dispatch({
+      type: 'users/remove',
+      payload: id,
+    })
   }
 
   function pageChangeHandler(page) {
