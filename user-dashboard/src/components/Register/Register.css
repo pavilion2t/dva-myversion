@@ -1,0 +1,27 @@
+.background {
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  width: 400px;
+}
+
+.cardInput {
+  margin-bottom: 10px;
+}
+
+.registerButton {
+  width: 400px;
+  margin-bottom: 10px;
+}
+
+.hasAccount {
+  display: flex;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.blueChar {
+  color: #66ccfc;
+}
