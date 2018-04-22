@@ -7,18 +7,12 @@ function Header({ location }) {
     <Menu
       seletedKeys={[location.pathname]}
       mode="horizontal"
-      theme="dark">
-      <Menu.Item key="/users">
-        <Link to="/users"><Icon type="bars " />Users</Link>
-      </Menu.Item>
+      theme="light">
       <Menu.Item key="/">
-        <Link to="/users"><Icon type="home " />Home</Link>
-      </Menu.Item>
-      <Menu.Item key="/404">
-        <Link to="/page-you-dont-know"><Icon type="frown-circle " />404</Link>
+        <Link to="/"><Icon type="home " />另客</Link>
       </Menu.Item>
       <Menu.Item key="/antd">
-        <a href="https://github.com/dvajs/dva" target="_blank">dva</a>
+        <Link to="/register">单词小麦</Link>
       </Menu.Item>
 
     </Menu>

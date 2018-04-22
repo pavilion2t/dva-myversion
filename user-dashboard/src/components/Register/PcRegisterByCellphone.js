@@ -33,6 +33,10 @@ class PcRegisterByCellphone extends Component {
     return (
       <div className={styles.background}>
         <div className={styles.card}>
+          <div className={styles.registerOrLogin}>
+            <div>手机注册</div>
+            <div>邮箱注册</div>
+          </div>
           <Input
             placeholder="请输入手机号"
             value={phoneNumber}
