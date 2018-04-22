@@ -9,7 +9,9 @@ function Header({ location }) {
       mode="horizontal"
       theme="light">
       <Menu.Item key="/">
-        <Link to="/"><Icon type="home " />另客</Link>
+        <Link to="/">
+          <img src={require("../../assets/pc/logo.png")}></img>
+        </Link>
       </Menu.Item>
       <Menu.Item key="/antd">
         <Link to="/register">单词小麦</Link>
