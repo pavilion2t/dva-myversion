@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styles from './Register.css';
 import { connect } from 'dva';
 import { Input, Button } from 'antd';
+import { Link } from 'dva/router';
 // import { routerRedux } from 'dva/router';
 
 class PcRegisterByCellphone extends Component {
@@ -59,7 +60,10 @@ class PcRegisterByCellphone extends Component {
             onClick={this.handleSubmit}
             className={styles.registerButton}>注册</Button>
           <div className={styles.hasAccount}>
-            已有账户？<span className={styles.blueChar}>马上登录</span>
+            已有账户？
+            <span className={styles.blueChar}>
+              <Link to="/login">马上登录</Link>
+            </span>
           </div>
         </div>
       </div>
