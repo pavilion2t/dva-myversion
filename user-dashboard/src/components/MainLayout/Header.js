@@ -14,6 +14,9 @@ function Header({ location }) {
       <Menu.Item key="/antd">
         <Link to="/register">单词小麦</Link>
       </Menu.Item>
+      <Menu.Item key="/userInfo">
+        <Link to="/userInfo">个人中心</Link>
+      </Menu.Item>
 
     </Menu>
   );
