@@ -62,8 +62,16 @@ class PcLogin extends Component {
               onClick={this.handleSubmit}
               className={styles.registerButton}>注册</Button>
           </div>
-          <div className={styles.hasAccount}>
-            已有账户？<span className={styles.blueChar}>马上登录</span>
+          <div className={styles.otherLoginMethod}>
+            <div style={{backgroundColor:"#f5f5f5", height: 1,width:100}}></div>
+            使用其他方式登录
+            <div style={{backgroundColor:"#f5f5f5", height: 1,width:100}}></div>
+          </div>
+          <div className={styles.fourMethods}>
+            <img src={require("../../assets/wechat.png")}></img>
+            <img src={require("../../assets/wechat.png")}></img>
+            <img src={require("../../assets/wechat.png")}></img>
+            <img src={require("../../assets/wechat.png")}></img>
           </div>
         </div>
       </div>
