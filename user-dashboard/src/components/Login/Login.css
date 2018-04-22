@@ -40,13 +40,6 @@
   padding: 10px 0;
 }
 
-.otherLoginMethod {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
-}
-
 .fourMethods {
   height: 50px;
   display: flex;
