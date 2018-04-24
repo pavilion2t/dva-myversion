@@ -8,7 +8,7 @@ function Users({ location }) {
   return (
     <MainLayout location={location}>
       <div className={styles.normal}>
-        <UsersComponent/>
+        <UsersComponent />
       </div>
     </MainLayout>
   );

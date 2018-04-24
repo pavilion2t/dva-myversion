@@ -15,4 +15,4 @@ function MainLayout({ children, location }) {
   );
 }
 
-export default MainLayout
+export default MainLayout;

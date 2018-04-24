@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { connect } from 'dva';
-import { Card, Form, Input, Button, Radio, Divider, DatePicker } from 'antd';
+import { Card, Form, Input, Button, Divider, DatePicker } from 'antd';
+
 const FormItem = Form.Item;
 const formItemLayout = {
   labelCol: {
@@ -29,29 +29,29 @@ class PcUserInfo extends Component {
         <Card title="基本资料">
           <Form>
             <FormItem label="另客号" {...formItemLayout}>
-
+              <Input />
             </FormItem>
             <FormItem label="昵称" {...formItemLayout}>
-              <Input></Input>
+              <Input />
             </FormItem>
             <FormItem label="个人简介" {...formItemLayout}>
-              <Input.TextArea></Input.TextArea>
+              <Input.TextArea />
             </FormItem>
             <FormItem label="常住地" {...formItemLayout}>
-              <Input></Input>
+              <Input />
             </FormItem>
             <FormItem label="生日" {...formItemLayout}>
-              <DatePicker></DatePicker>
+              <DatePicker />
             </FormItem>
             <FormItem label="星座" {...formItemLayout}>
-              <Input></Input>
+              <Input />
             </FormItem>
             <FormItem label="性别" {...formItemLayout}>
-              <Input></Input>
+              <Input />
             </FormItem>
             <Button type="primary">保存</Button>
           </Form>
-          <Divider/>
+          <Divider />
           <div>
             <div>登录密码： ******  修改</div>
             <div>绑定手机 ******  绑定</div>
@@ -65,4 +65,4 @@ class PcUserInfo extends Component {
   }
 }
 
-export default PcUserInfo
+export default PcUserInfo;

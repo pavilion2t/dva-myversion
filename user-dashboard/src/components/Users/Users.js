@@ -1,31 +1,32 @@
 import React from 'react';
-import styles from './Users.css';
 import { connect } from 'dva';
 import { Table, Pagination, Popconfirm } from 'antd';
 import { routerRedux } from 'dva/router';
+import styles from './Users.css';
 import UserModal from './UserModal';
 
-function Users({ list: dataSource, total, page: current, loading, dispatch }) {
-
+function Users({
+  list: dataSource, total, page: current, loading, dispatch,
+}) {
   function deleteHandler(id) {
     dispatch({
       type: 'users/remove',
       payload: id,
-    })
+    });
   }
 
   function pageChangeHandler(page) {
     dispatch(routerRedux.push({
       pathname: '/users',
       query: { page },
-    }))
+    }));
   }
 
   function editHandler(id, values) {
     dispatch({
       type: 'users/patch',
       payload: { id, values },
-    })
+    });
   }
 
   const columns = [
@@ -59,7 +60,7 @@ function Users({ list: dataSource, total, page: current, loading, dispatch }) {
         </span>
       ),
     },
-  ]
+  ];
   return (
     <div className={styles.normal}>
       <div>
@@ -68,13 +69,15 @@ function Users({ list: dataSource, total, page: current, loading, dispatch }) {
           dataSource={dataSource}
           loading={loading}
           rowKey={record => record.id}
-          pagination={false}/>
+          pagination={false}
+        />
         <Pagination
           className="ant-table-pagination"
           total={total}
           current={current}
           onChange={pageChangeHandler}
-          pageSize={3}/>
+          pageSize={3}
+        />
       </div>
     </div>
   );
@@ -82,7 +85,7 @@ function Users({ list: dataSource, total, page: current, loading, dispatch }) {
 
 function mapStateToProps(state) {
   const { list, total, page } = state.users;
-  return { list, total, page, loading: state.loading.models.users, }
+  return { list, total, page, loading: state.loading.models.users };
 }
 
 export default connect(mapStateToProps)(Users);

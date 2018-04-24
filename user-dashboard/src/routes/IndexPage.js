@@ -14,7 +14,7 @@ function IndexPage({ location }) {
         </ul>
       </div>
     </MainLayout>
-  )
+  );
 }
 
 IndexPage.propTypes = {

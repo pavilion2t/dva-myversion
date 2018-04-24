@@ -13,6 +13,8 @@
 
 .welcome {
   height: 328px;
+  background: url(../assets/pc/logo.png) no-repeat center 0;
+  background-size: 90px 32px;
 }
 
 .list {

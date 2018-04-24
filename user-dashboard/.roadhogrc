@@ -12,9 +12,9 @@
   "autoprefixer": null,
   "proxy": {
     "/api": {
-      "target": "http://linker.links123.net/v1/",
+      "target": "http://linker.links123.net",
       "changeOrigin": true,
-      "pathRewrite": { "^/api" : "" }
+      "pathRewrite": { "^/api" : "v1" }
     }
   },
   "extraBabelPlugins": [

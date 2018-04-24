@@ -10,11 +10,12 @@ export default {
   },
 
   effects: {
-    *send({ payload }, { call, put }) {
-      const { data } = yield call(regiserService.sendAuthCode, {...payload})
-      if(data.code === 0){
-        const {} = data.data;
-      }
+    *send({ payload }, { call }) {
+      yield call(regiserService.sendAuthCode, { ...payload });
+    },
+
+    *signUp({ payload }, { call }) {
+      yield call(regiserService.getRegister, { ...payload });
     },
   },
 

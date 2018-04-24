@@ -8,7 +8,7 @@ function UserInfo({ location }) {
   return (
     <MainLayout location={location}>
       <div className={styles.normal}>
-        <UserInfoComponent/>
+        <UserInfoComponent />
       </div>
     </MainLayout>
   );

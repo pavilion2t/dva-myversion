@@ -12,16 +12,16 @@ class UserEditModal extends Component {
   }
 
   showModalHandler = (e) => {
-    if (e) e.preventDefault()
+    if (e) e.preventDefault();
     this.setState({
       visible: true,
-    })
+    });
   }
 
   hideModalHandler = () => {
     this.setState({
       visible: false,
-    })
+    });
   }
 
   okHandler = () => {
@@ -31,7 +31,7 @@ class UserEditModal extends Component {
         onOk(values);
         this.hideModalHandler();
       }
-    })
+    });
   }
 
   render() {
@@ -41,7 +41,7 @@ class UserEditModal extends Component {
     const formItemLayout = {
       labelCol: { span: 6 },
       wrapperCol: { span: 14 },
-    }
+    };
 
     return (
       <span>
@@ -52,28 +52,29 @@ class UserEditModal extends Component {
           title="Edit User"
           visible={this.state.visible}
           onOk={this.okHandler}
-          onCancel={this.hideModalHandler}>
+          onCancel={this.hideModalHandler}
+        >
           <Form horizontal onSubmit={this.okHandler}>
             <FormItem {...formItemLayout} label="Name">
               {
-                getFieldDecorator('name',{ initialValue: name })(<Input />)
+                getFieldDecorator('name', { initialValue: name })(<Input />)
               }
             </FormItem>
             <FormItem {...formItemLayout} label="Email">
               {
-                getFieldDecorator('email',{ initialValue: email })(<Input />)
+                getFieldDecorator('email', { initialValue: email })(<Input />)
               }
             </FormItem>
             <FormItem {...formItemLayout} label="Website">
               {
-                getFieldDecorator('website',{ initialValue: website })(<Input />)
+                getFieldDecorator('website', { initialValue: website })(<Input />)
               }
             </FormItem>
           </Form>
         </Modal>
       </span>
-    )
+    );
   }
 }
 
-export default Form.create()(UserEditModal)
+export default Form.create()(UserEditModal);

@@ -1,35 +1,32 @@
 import React, { Component } from 'react';
+import { Input, Button, Radio, Divider, Form } from 'antd';
 import styles from './Login.css';
-import { connect } from 'dva';
-import { Input, Button, Radio, Divider } from 'antd';
-// import { routerRedux } from 'dva/router';
+
+const FormItem = Form.Item;
 
 class PcLogin extends Component {
   constructor(props) {
     super(props);
-    this.handleChange = this.handleChange.bind(this)
-    this.handleRegister = this.handleRegister.bind(this)
-    this.state = {
-      phoneNumber: "",
-      authCode: "",
-      password: "",
-    };
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(e, name) {
-    console.log(e.target.value)
-    console.log(name)
-    this.setState({
-      [name]: e.target.value
-    })
-  }
-
-  handleRegister() {
-    console.log("handleRegister")
+  handleSubmit() {
+    const { dispatch, form } = this.props;
+    const { getFieldsValue } = form;
+    const values = getFieldsValue();
+    dispatch({
+      type: 'login/login',
+      payload: {
+        username: values.username,
+        password: values.password,
+      },
+    });
   }
 
   render() {
-    const { phoneNumber,authCode,password } = this.state;
+    const { form } = this.props;
+    const { getFieldDecorator } = form;
+
     return (
       <div className={styles.background}>
         <div className={styles.card}>
@@ -37,17 +34,28 @@ class PcLogin extends Component {
             <div>账号登录</div>
             <div>扫码登录</div>
           </div>
-          <Input
-            placeholder="请输入邮箱或手机号"
-            value={phoneNumber}
-            onChange={e => this.handleChange(e,"phoneNumber")}
-            className={styles.cardInput}/>
-          <Input
-            placeholder="请输入密码"
-            type="password"
-            value={password}
-            onChange={e => this.handleChange(e,"password")}
-            className={styles.cardInput}/>
+          <FormItem>
+            {getFieldDecorator('username', {
+              rules: [{ required: true, message: '请输入邮箱或手机号' }],
+            })(
+              <Input
+                placeholder="请输入邮箱或手机号"
+                className={styles.cardInput}
+              />,
+            )}
+          </FormItem>
+          <FormItem>
+            {getFieldDecorator('password', {
+              rules: [{ required: true, message: '请输入密码' }],
+            })(
+              <Input
+                placeholder="请输入密码"
+                type="password"
+                className={styles.cardInput}
+              />,
+            )}
+          </FormItem>
+
           <div className={styles.rememberOrForget}>
             <Radio>记住登录状态</Radio>
             <span className={styles.blueChar}>忘记密码</span>
@@ -56,18 +64,20 @@ class PcLogin extends Component {
             <Button
               type="primary"
               onClick={this.handleSubmit}
-              className={styles.registerButton}>登录</Button>
+              className={styles.registerButton}
+            >登录</Button>
             <Button
               type="default"
               onClick={this.handleSubmit}
-              className={styles.registerButton}>注册</Button>
+              className={styles.registerButton}
+            >注册</Button>
           </div>
           <Divider>使用其他方式登录</Divider>
           <div className={styles.fourMethods}>
-            <img src={require("../../assets/pc/WeChat-grey.png")}></img>
-            <img src={require("../../assets/pc/QQ-grey.png")}></img>
-            <img src={require("../../assets/pc/Weibo-grey.png")}></img>
-            <img src={require("../../assets/pc/mobile-grey.png")}></img>
+            <img alt={'login'} src={require('../../assets/pc/WeChat-grey.png')} />
+            <img alt={'login'} src={require('../../assets/pc/QQ-grey.png')} />
+            <img alt={'login'} src={require('../../assets/pc/Weibo-grey.png')} />
+            <img alt={'login'} src={require('../../assets/pc/mobile-grey.png')} />
           </div>
         </div>
       </div>
@@ -75,9 +85,4 @@ class PcLogin extends Component {
   }
 }
 
-// function mapStateToProps(state) {
-//
-// }
-
-// export default connect(mapStateToProps)(PcLogin);
-export default PcLogin
+export default PcLogin;
