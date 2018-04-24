@@ -8,13 +8,8 @@ function Header({ location }) {
       seletedKeys={[location.pathname]}
       mode="horizontal"
       theme="light">
-      <Menu.Item key="/">
-        <Link to="/">
-          <img src={require("../../assets/pc/logo.png")}></img>
-        </Link>
-      </Menu.Item>
       <Menu.Item key="/antd">
-        <Link to="/register">单词小麦</Link>
+        <Link to="/register">注册登录</Link>
       </Menu.Item>
       <Menu.Item key="/userInfo">
         <Link to="/userInfo">个人中心</Link>

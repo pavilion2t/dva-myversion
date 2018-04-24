@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import styles from './Register.css';
 import { connect } from 'dva';
-import { Input, Button } from 'antd';
+import { Input, Button, Divider, Form, Row, Col } from 'antd';
 import { Link } from 'dva/router';
 // import { routerRedux } from 'dva/router';
+
+const FormItem = Form.Item;
 
 class PcRegisterByCellphone extends Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this)
     this.handleRegister = this.handleRegister.bind(this)
+    this.getVerifyCode = this.getVerifyCode.bind(this)
     this.state = {
       phoneNumber: "",
       authCode: "",
@@ -18,8 +21,6 @@ class PcRegisterByCellphone extends Component {
   }
 
   handleChange(e, name) {
-    console.log(e.target.value)
-    console.log(name)
     this.setState({
       [name]: e.target.value
     })
@@ -28,9 +29,29 @@ class PcRegisterByCellphone extends Component {
   handleRegister() {
     console.log("handleRegister")
   }
+  getVerifyCode() {
+    console.log("getVerifyCode")
+  }
+
+  handleSubmit = () => {
+    const { dispatch, form } = this.props;
+    const { getFieldsValue } = form;
+    const values = getFieldsValue();
+    console.log('df');
+    dispatch({
+      type: 'register/send',
+      payload: {
+        phone: values.phone,
+        phone_code: "86",
+        purpose: "register",
+      }
+    })
+  }
 
   render() {
     const { phoneNumber,authCode,password } = this.state;
+    const { form } = this.props;
+    const { getFieldDecorator } = this.props.form;
     return (
       <div className={styles.background}>
         <div className={styles.card}>
@@ -38,27 +59,44 @@ class PcRegisterByCellphone extends Component {
             <div>手机注册</div>
             <div>邮箱注册</div>
           </div>
-          <Input
-            placeholder="请输入手机号"
-            value={phoneNumber}
-            onChange={e => this.handleChange(e,"phoneNumber")}
-            className={styles.cardInput}/>
-          <Input
-            placeholder="请输入验证码"
-            value={authCode}
-            onChange={e => this.handleChange(e,"authCode")}
-            className={styles.cardInput}
-            suffix="获取验证码"/>
-          <Input
-            placeholder="请输入密码"
-            type="password"
-            value={password}
-            onChange={e => this.handleChange(e,"password")}
-            className={styles.cardInput}/>
-          <Button
+          <Form>
+            <FormItem>
+              {getFieldDecorator('phone', {
+                rules: [{}],
+              })(
+                <Input placeholder="请输入手机号"/>
+              )}
+            </FormItem>
+            <FormItem>
+              {getFieldDecorator('confirm', {
+                rules: [{}],
+              })(
+                <Row gutter={8}>
+                  <Col span={16}>
+                    {getFieldDecorator('confirm', {
+                      rules: [{ required: true, message: '请输入验证码' }],
+                    })(
+                      <Input placeholder="请输入验证码"/>
+                    )}
+                  </Col>
+                  <Col span={6}>
+                    <Button onClick={() => {this.handleSubmit()}}>获取验证码</Button>
+                  </Col>
+                </Row>
+              )}
+            </FormItem>
+            <FormItem>
+              {getFieldDecorator('password', {
+                rules: [{}],
+              })(
+                <Input placeholder="请输入密码"/>
+              )}
+            </FormItem>
+            <Button
             type="primary"
-            onClick={this.handleSubmit}
+            //onClick={}
             className={styles.registerButton}>注册</Button>
+          </Form >
           <div className={styles.hasAccount}>
             已有账户？
             <span className={styles.blueChar}>

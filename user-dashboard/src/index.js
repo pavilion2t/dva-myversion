@@ -9,7 +9,11 @@ const app = dva();
 app.use(createLoading());
 
 // 3. Model
-app.model(require('./models/users'));
+const models = [];
+models.push(require('./models/register.js'));
+models.push(require('./models/users.js'));
+
+models.forEach(item => app.model(item));
 
 // 4. Router
 app.router(require('./router'));
